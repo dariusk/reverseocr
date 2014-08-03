@@ -28,7 +28,7 @@
     "cheerio": "~0.12.2",
     "inflection": "~1.2.6",
     "node-twitter": "^0.5.2",
-    "ocr": "https://github.com/antimatter15/ocrad.js/archive/master.tar.gz",
+    "ocrad.js": "https://github.com/antimatter15/ocrad.js/archive/master.tar.gz",
     "request": "~2.27.0",
     "tumblrwks": "^0.2.0",
     "twit": "~1.1.9",
