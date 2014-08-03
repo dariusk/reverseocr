@@ -106,7 +106,7 @@ function generate() {
     word = res.pick();
     console.log(word);
     for (var j=0; j < word.length; j++) {
-      for(var i=0; i<4000; i++) {
+      for(var i=0; i<8000; i++) {
         gCtx.fillStyle = 'white';
         gCtx.fillRect(0, 0, WIDTH, HEIGHT);
         gCtx.fillStyle = 'black';
