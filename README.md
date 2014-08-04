@@ -14,5 +14,5 @@ Here's how this works:
 This bot is scheduled to run on a cron job, so when `index.js` is run, it does this exactly once on its own.
 
 ## License
-Copyright (c) 2014 Kazemi, Darius  
+Copyright (c) 2014 Darius Kazemi  
 Licensed under the MIT license.
