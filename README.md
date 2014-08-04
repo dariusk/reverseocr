@@ -11,6 +11,8 @@ Here's how this works:
 * When we're done we stitch it all together into an 800x200 image.
 * Post to Twitter and Tumblr.
 
+This bot is scheduled to run on a cron job, so when `index.js` is run, it does this exactly once on its own.
+
 ## License
 Copyright (c) 2014 Kazemi, Darius  
 Licensed under the MIT license.
