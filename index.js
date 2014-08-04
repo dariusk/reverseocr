@@ -1,9 +1,7 @@
 var exec = require('child_process').exec;
 var request = require('request');
-var cheerio = require('cheerio');
 var _ = require('underscore');
 _.mixin( require('underscore.deferred') );
-var inflection = require('inflection');
 var conf = require('./config.js');
 var Twitter = require('node-twitter');
 var twitterRestClient = new Twitter.RestClient(
@@ -47,8 +45,7 @@ Array.prototype.pickRemove = function() {
 
 function makePng(canvas) {
   var dfd = new _.Deferred();
-  var fs = require('fs'),
-      out = fs.createWriteStream(__dirname + '/out.png'),
+  var out = fs.createWriteStream(__dirname + '/out.png'),
       stream = canvas.pngStream();
 
   stream.on('data', function(chunk){
@@ -70,7 +67,7 @@ function generate() {
   gCtx.lineWidth = 2;
   ctx.circle = function(x, y, r) {
     this.arc(x, y, r, 0, Math.PI*2, true);
-  }
+  };
 
   ctx.font = '30px Arial';
   ctx.fillStyle = 'white';
@@ -92,14 +89,6 @@ function generate() {
   var result = '';
   var finalResult = '';
 
-  function isVowel(c) {
-    if (c === 'a' || c === 'e' || c === 'i' || c === 'o' || c === 'u' ||
-        c === 'A' || c === 'E' || c === 'I' || c === 'O' || c === 'U') {
-      return true;
-    }
-    return false;
-  }
-
   var word = 'reverse ocr';
   request('http://api.wordnik.com/v4/words.json/randomWords?minCorpusCount=8000&maxLength=8&minDictionaryCount=5&excludePartOfSpeech=proper-noun,proper-noun-plural,proper-noun-posessive,suffix,family-name,idiom,affix&hasDictionaryDef=true&includePartOfSpeech=noun&limit=1000&maxLength=22&api_key='+wordnikKey, function(err, resp, body) {
     var res = _.pluck(JSON.parse(body), 'word');
@@ -114,7 +103,7 @@ function generate() {
         result = Ocrad(gCanvas).trim();
         if (result.length === 1 && result.charCodeAt(0) >= 65 && result.charCodeAt(0) <= 122 && result === word[j]) {
           console.log(result);
-          var bimg = new Image;
+          var bimg = new Image();
           bimg.src = gCanvas.toBuffer();
           ctx.drawImage(bimg, j*GWIDTH, 0, GWIDTH, HEIGHT);
           finalResult += result;
